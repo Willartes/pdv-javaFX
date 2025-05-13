@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.pdv.controller.ReportsController"
+            prefHeight="600.0" prefWidth="900.0">
+
+    <!-- Barra superior -->
+    <top>
+        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #1b5583;">
+                    <children>
+                        <Button fx:id="menuButton" mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: #1b5583;" text="Menu Principal" onAction="#voltarParaPDV">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Button>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-text-fill: white;" text="Relatórios" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- Conteúdo principal -->
+    <center>
+        <SplitPane dividerPositions="0.3">
+            <!-- Painel esquerdo - Opções de relatório -->
+            <VBox spacing="10" style="-fx-padding: 10;">
+                <Label text="Tipo de Relatório" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="reportTypeComboBox" maxWidth="Infinity"/>
+
+                <Label text="Período" style="-fx-font-weight: bold; -fx-padding: 10 0 0 0;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Data Inicial:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Data Final:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                </GridPane>
+
+                <Label text="Formato de Saída" style="-fx-font-weight: bold; -fx-padding: 10 0 0 0;"/>
+                <HBox spacing="10">
+                    <RadioButton fx:id="pdfFormatRadio" text="PDF" selected="true">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="formatToggleGroup"/>
+                        </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="textFormatRadio" text="Texto" toggleGroup="$formatToggleGroup"/>
+                </HBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button fx:id="generateButton" text="Gerar Relatório"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #3366cc; -fx-text-fill: white;"/>
+
+                <Button fx:id="saveButton" text="Salvar Relatório"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #33cc33; -fx-text-fill: white;"/>
+
+                <Button fx:id="printButton" text="Imprimir Relatório"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #ff9900; -fx-text-fill: white;"/>
+            </VBox>
+
+            <!-- Painel direito - Visualização do relatório -->
+            <VBox>
+                <TextArea fx:id="reportPreviewArea" VBox.vgrow="ALWAYS" editable="false" wrapText="true"/>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

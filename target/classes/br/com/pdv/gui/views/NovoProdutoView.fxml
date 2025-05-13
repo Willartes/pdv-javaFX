@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.pdv.controller.NovoProdutoController">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="780.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label text="Produto" styleClass="section-title">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            
+            <!-- Seção Nome -->
+            <TitledPane animated="false" text="Nome" expanded="true">
+               <content>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <TextField fx:id="nomeField" promptText="Nome do produto" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Seção Descrição -->
+            <TitledPane animated="false" text="Descrição" expanded="false">
+               <content>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <TextArea fx:id="descricaoArea" prefHeight="60.0" promptText="Descrição detalhada do produto" wrapText="true" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Seção Tipo do Produto -->
+            <TitledPane animated="false" text="Tipo do Produto" expanded="false">
+               <content>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <ComboBox fx:id="tipoComboBox" prefWidth="150.0" promptText="Selecione" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Seção Classificação -->
+            <TitledPane animated="false" text="Classificação" expanded="false">
+               <content>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox prefWidth="375.0">
+                                 <children>
+                                    <Label text="Marca" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ComboBox fx:id="marcaComboBox" prefWidth="300.0" promptText="Selecione" />
+                                          <Button fx:id="novaMarcaButton" mnemonicParsing="false" text="Novo" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox spacing="10.0">
+								    <children>
+								        <VBox prefWidth="375.0">
+								            <children>
+								                <Label text="Data de Vencimento" />
+								                <DatePicker fx:id="vencimentoPicker" prefWidth="300.0" />
+								            </children>
+								        </VBox>
+								    </children>
+								</HBox>
+                              </VBox>
+                              <VBox prefWidth="375.0">
+                                 <children>
+                                    <Label text="Subcategoria" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ComboBox fx:id="subcategoriaComboBox" prefWidth="300.0" promptText="Selecione" />
+                                          <Button fx:id="novaSubcategoriaButton" mnemonicParsing="false" text="Novo" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Seção Unidade -->
+            <TitledPane animated="false" text="Unidade" expanded="false">
+               <content>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <TextField fx:id="unidadeField" promptText="UN" />
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Seção Categoria (Essa deve ser expandida por padrão) -->
+            <TitledPane animated="false" text="Categoria" expanded="true">
+               <content>
+                  <VBox spacing="5.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <ComboBox fx:id="categoriaComboBox" prefWidth="710.0" promptText="Selecione" />
+                              <Button fx:id="novaCategoriaButton" mnemonicParsing="false" text="Novo" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Seção Características do Produto (expandida por padrão) -->
+            <TitledPane animated="false" text="Características do Produto: 1" expanded="true">
+               <content>
+                  <VBox spacing="10.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox prefWidth="375.0">
+                                 <children>
+                                    <Label text="Código de Barras" />
+                                    <TextField fx:id="codigoBarrasField" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="375.0">
+                                 <children>
+                                    <Label text="Código do Produto" />
+                                    <TextField fx:id="codigoProdutoField" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="Cor" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ComboBox fx:id="corComboBox" prefWidth="135.0" promptText="Selecione" />
+                                          <Button fx:id="novaCorButton" mnemonicParsing="false" text="+" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="Tamanho" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ComboBox fx:id="tamanhoComboBox" prefWidth="135.0" promptText="Selecione" />
+                                          <Button fx:id="novoTamanhoButton" mnemonicParsing="false" text="+" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="Custo" />
+                                    <TextField fx:id="custoField" promptText="0,00" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="Markup %" />
+                                    <TextField fx:id="markupField" promptText="Markup %" prefWidth="100.0" />
+                                    <!-- Button fx:id="novoMarkupButton" text="+" prefWidth="30.0" styleClass="add-button" / -->
+                                 </children>
+                              </VBox>
+                              
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="Valor" />
+                                    <TextField fx:id="valorField" promptText="0,00" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="CFOP" />
+                                    <TextField fx:id="cfopField" promptText="5.102" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="ICMS %" />
+                                    <TextField fx:id="icmsField" promptText="0,00" />
+                                 </children>
+                              </VBox>
+                              
+                              <VBox prefWidth="180.0">
+                                 <children>
+                                    <Label text="ICMS Sub %" />
+                                    <TextField fx:id="icmsSubField" promptText="0,00" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        
+                        <HBox spacing="10.0">
+                           <children>
+                              <VBox prefWidth="375.0">
+                                 <children>
+                                    <Label text="Estoque" />
+                                    <TextField fx:id="estoqueField" promptText="0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefWidth="375.0">
+                                 <children>
+                                    <Label text="Estoque Mínimo" />
+                                    <TextField fx:id="estoqueMinField" promptText="0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+            
+            <!-- Botões de controle na parte inferior -->
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="cancelarButton" mnemonicParsing="false" text="Cancelar" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+                  <Button fx:id="salvarButton" mnemonicParsing="false" text="Salvar" style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

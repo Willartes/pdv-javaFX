@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.pdv.controller.DashboardController"
+            prefHeight="700.0" prefWidth="1000.0">
+    
+    <!-- Barra superior -->
+    <top>
+        <HBox style="-fx-background-color: #1b5583; -fx-padding: 10px;" alignment="CENTER_LEFT" spacing="15">
+            <Button fx:id="menuButton" text="Menu Principal" style="-fx-background-color: #ffffff; -fx-text-fill: #1b5583;"/>
+            <Label text="Dashboard" style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Button fx:id="refreshButton" text="Atualizar" style="-fx-background-color: #ffffff; -fx-text-fill: #1b5583;"/>
+        </HBox>
+    </top>
+    
+    <!-- Conteúdo principal -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <VBox spacing="15" style="-fx-background-color: #f8f8f8; -fx-padding: 15;">
+                
+                <!-- Título -->
+                <Label text="Visão geral" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                
+                <!-- Cards de informações -->
+                <HBox spacing="10">
+                    <!-- Total de Vendas -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Total de Vendas" style="-fx-text-fill: #666666;"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label style="-fx-background-color: #4285f4; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 50;" text="📊"/>
+                        </HBox>
+                        <Label fx:id="totalVendasLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <!-- Total de Produtos -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Total de Produtos" style="-fx-text-fill: #666666;"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label style="-fx-background-color: #34a853; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 50;" text="📦"/>
+                        </HBox>
+                        <Label fx:id="totalProdutosLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <!-- Total de Clientes -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Total de Clientes" style="-fx-text-fill: #666666;"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label style="-fx-background-color: #fbbc05; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 50;" text="👥"/>
+                        </HBox>
+                        <Label fx:id="totalClientesLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <!-- Valor Total -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Valor Total" style="-fx-text-fill: #666666;"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label style="-fx-background-color: #ea4335; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 50;" text="💰"/>
+                        </HBox>
+                        <Label fx:id="valorTotalLabel" text="R$ 0,00" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Cards de estoque -->
+                <HBox spacing="10">
+                    <!-- Total em Estoque -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Total em Estoque" style="-fx-text-fill: #666666;"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label style="-fx-background-color: #673ab7; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 50;" text="🏭"/>
+                        </HBox>
+                        <Label fx:id="totalEstoqueLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <!-- Estoque em Alerta -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Produtos em Alerta" style="-fx-text-fill: #666666;"/>
+                            <Pane HBox.hgrow="ALWAYS"/>
+                            <Label style="-fx-background-color: #ff6d00; -fx-text-fill: white; -fx-padding: 5 10; -fx-background-radius: 50;" text="⚠️"/>
+                        </HBox>
+                        <Label fx:id="estoqueEmAlertaLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Título seção vendas -->
+                <Label text="Vendas" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 10 0 0 0;"/>
+                
+                <!-- Gráficos de vendas -->
+                <HBox spacing="10">
+                    <!-- Gráfico de vendas mensais -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <Label text="VENDAS (MÊS)" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
+                        <BarChart fx:id="vendasMensaisChart" legendVisible="false" VBox.vgrow="ALWAYS">
+                            <xAxis>
+                                <CategoryAxis label="Mês" tickLabelRotation="45"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Quantidade" tickUnit="1" minorTickVisible="false"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+                    
+                    <!-- Gráfico de valor de vendas mensais -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <Label text="VALOR EM VENDAS (MÊS)" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
+                        <LineChart fx:id="valorVendasMensaisChart" legendVisible="false" VBox.vgrow="ALWAYS">
+                            <xAxis>
+                                <CategoryAxis label="Mês" tickLabelRotation="45"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Valor (R$)" tickUnit="50" minorTickVisible="false"/>
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                </HBox>
+                
+                <!-- Informações adicionais -->
+                <HBox spacing="10">
+                    <!-- Top 5 produtos mais vendidos -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <Label text="Top 5 Produtos Mais Vendidos" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
+                        <TableView fx:id="topProdutosTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="produtoNomeColumn" text="Produto" prefWidth="220"/>
+                                <TableColumn fx:id="quantidadeVendidaColumn" text="Qtd. Vendida" prefWidth="100"/>
+                                <TableColumn fx:id="valorTotalColumn" text="Valor Total" prefWidth="100"/>
+                            </columns>
+                            <placeholder>
+                                <Label text="Nenhum produto vendido ainda"/>
+                            </placeholder>
+                        </TableView>
+                    </VBox>
+                    
+                    <!-- Produtos com estoque baixo -->
+                    <VBox styleClass="card" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);" HBox.hgrow="ALWAYS">
+                        <Label text="Produtos com Estoque Baixo" style="-fx-font-weight: bold; -fx-text-fill: #333333;"/>
+                        <TableView fx:id="estoqueBaixoTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="produtoEstoqueColumn" text="Produto" prefWidth="220"/>
+                                <TableColumn fx:id="estoqueAtualColumn" text="Estoque Atual" prefWidth="100"/>
+                                <TableColumn fx:id="estoqueMinColumn" text="Estoque Mínimo" prefWidth="100"/>
+                            </columns>
+                            <placeholder>
+                                <Label text="Nenhum produto com estoque baixo"/>
+                            </placeholder>
+                        </TableView>
+                    </VBox>
+                </HBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

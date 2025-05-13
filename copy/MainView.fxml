@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.pdv.controller.MainController"
+            prefHeight="600.0" prefWidth="900.0">
+    
+    <!-- Barra superior -->
+    <top>
+        <ToolBar style="-fx-background-color: #304c70;">
+            <Label text="Will Rodrigues" style="-fx-font-size: 50px; -fx-text-fill: white;"/>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="configButton" text="⚙" style="-fx-font-size: 16px;"/>
+        </ToolBar>
+    </top>
+    
+    <!-- Conteúdo principal -->
+    <center>
+        <SplitPane dividerPositions="0.4">
+            <!-- Painel esquerdo - Formulário -->
+            <VBox spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+                <Label text="Produto" />
+                <HBox spacing="5">
+                    <TextField fx:id="productField" HBox.hgrow="ALWAYS" />
+                    <CheckBox fx:id="productCheck" />
+                </HBox>
+                
+                <Label text="Cliente" />
+                <TextField fx:id="clientField" />
+                
+                <HBox spacing="10">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Quantidade" />
+                        <TextField fx:id="quantityField" />
+                    </VBox>
+                    
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Valor unitário" />
+                        <TextField fx:id="unitValueField" />
+                    </VBox>
+                    
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Valor total" />
+                        <TextField fx:id="totalValueField" />
+                    </VBox>
+                </HBox>
+                
+                <Button fx:id="addButton" text="Incluir" 
+                        style="-fx-background-color: #3366cc; -fx-text-fill: white;"
+                        maxWidth="Infinity" />
+                
+                <TabPane tabClosingPolicy="UNAVAILABLE">
+                    <Tab text="Observações">
+                        <TextArea fx:id="observationsArea" prefHeight="150" />
+                    </Tab>
+                    <Tab text="Informações Complementares">
+                        <TextArea fx:id="complementaryInfoArea" prefHeight="150" />
+                    </Tab>
+                    <Tab text="Informações Fisco">
+                        <TextArea fx:id="fiscalInfoArea" prefHeight="150" />
+                    </Tab>
+                </TabPane>
+                
+                <HBox spacing="10">
+                    <Label text="Operador:" />
+                    <Label fx:id="operatorLabel" text="William Rodrigues da Silva" />
+                </HBox>
+                
+                <HBox spacing="10">
+                    <Label text="Vendedor:" />
+                    <ComboBox fx:id="sellerComboBox" promptText="Sem Vendedor" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                </HBox>
+            </VBox>
+            
+            <!-- Painel direito - Itens -->
+            <VBox>
+                <!-- Tabela de produtos -->
+                <TableView fx:id="productsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="productColumn" text="PRODUTO" />
+                        <TableColumn fx:id="codeColumn" text="CÓDIGO" />
+                        <TableColumn fx:id="quantityColumn" text="QTD." />
+                        <TableColumn fx:id="priceColumn" text="PREÇO" />
+                        <TableColumn fx:id="totalColumn" text="TOTAL" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                
+                <!-- Resumo e valores -->
+                <HBox style="-fx-background-color: #2a5885; -fx-padding: 10;">
+                    <VBox alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-padding: 0 5 0 5;">
+                        <Label text="SUBTOTAL R$" style="-fx-text-fill: white;" />
+                        <Label fx:id="subtotalLabel" text="0,00" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    </VBox>
+                    
+                    <VBox alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-padding: 0 5 0 5;">
+                        <Label text="RECEBIDO R$" style="-fx-text-fill: white;" />
+                        <Label fx:id="receivedLabel" text="0,00" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    </VBox>
+                    
+                    <VBox alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-padding: 0 5 0 5;">
+                        <Label text="RESTANTE R$" style="-fx-text-fill: white;" />
+                        <Label fx:id="remainingLabel" text="0,00" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    </VBox>
+                    
+                    <VBox alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-padding: 0 5 0 5;">
+                        <Label text="TROCO R$" style="-fx-text-fill: white;" />
+                        <Label fx:id="changeLabel" text="0,00" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                    </VBox>
+                </HBox>
+                
+                <!-- Botões de ação -->
+                <HBox spacing="5" style="-fx-padding: 5;">
+                    <Button fx:id="cancelButton" text="Cancelar (ESC)" 
+                            style="-fx-background-color: #ff5555; -fx-text-fill: white;"
+                            maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+                    
+                    <Button fx:id="saveButton" text="Salvar (F2)" 
+                            style="-fx-background-color: #ffaa00; -fx-text-fill: white;"
+                            maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+                    
+                    <Button fx:id="emitNFeButton" text="Emitir NF-e (F3)" 
+                            style="-fx-background-color: #33cc33; -fx-text-fill: white;"
+                            maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+                    
+                    <Button fx:id="emitNFCeButton" text="Emitir NFC-e (F4)" 
+                            style="-fx-background-color: #009966; -fx-text-fill: white;"
+                            maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+                    
+                    <Button fx:id="paymentButton" text="Pagamento ↵" 
+                            style="-fx-background-color: #3399ff; -fx-text-fill: white;"
+                            maxWidth="Infinity" HBox.hgrow="ALWAYS" />
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>
